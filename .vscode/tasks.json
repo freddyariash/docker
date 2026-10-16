@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "API: uvicorn (local, venv)",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --reload",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: compose up",
+      "type": "shell",
+      "command": "docker compose up -d --build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: compose down",
+      "type": "shell",
+      "command": "docker compose down",
+      "problemMatcher": []
+    },
+    {
+      "label": "Alembic: upgrade head",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/alembic upgrade head",
+      "problemMatcher": []
+    }
+  ]
+}
