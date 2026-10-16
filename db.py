@@ -27,10 +27,11 @@ def _wsl_host() -> str:
     return "127.0.0.1"
 
 
+# Las credenciales se toman siempre del entorno (archivo .env en local).
 HOST = os.getenv("MYSQL_HOST") or _wsl_host()
 PORT = int(os.getenv("MYSQL_PORT", "3307"))
 USER = os.getenv("MYSQL_USER", "appuser")
-PASSWORD = os.getenv("MYSQL_PASSWORD", "App1234!")
+PASSWORD = os.getenv("MYSQL_PASSWORD", "")
 DATABASE = os.getenv("MYSQL_DATABASE", "appdb")
 
 MYSQL_INFO = {"host": HOST, "port": PORT, "user": USER, "database": DATABASE}

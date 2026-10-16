@@ -20,6 +20,17 @@ projects/
 └── .vscode/             # Debug F5, tasks y extensiones recomendadas
 ```
 
+## Configuración
+
+Las credenciales **no se versionan**. Crea tu `.env`:
+
+```bash
+cp .env.example .env    # y pon tus valores
+```
+
+Variables: `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` y, para Docker,
+`MYSQL_ROOT_PASSWORD`. `docker compose` lee el `.env` automáticamente.
+
 ## Endpoints
 
 | Método | Ruta | Descripción |
@@ -36,11 +47,10 @@ Docs interactivas: http://localhost:8000/docs
 
 ```bash
 cd ~/projects
-cp .env.example .env      # y pon tus credenciales
 ./start.sh                # http://localhost:8000
 ```
 
-El host de MySQL se autodetecta desde el gateway de WSL.
+El host de MySQL se autodetecta desde el gateway de WSL (`172.18.0.1`).
 
 ## Opción 2 — Todo en contenedores (autocontenido)
 
@@ -78,16 +88,12 @@ pytest
 
 Los tests usan SQLite en memoria, así que **no necesitan MySQL**.
 
-## Credenciales
+## Puertos de referencia
 
-No se versionan. Cópialas a `.env` (ver `.env.example`). Los valores por
-defecto que se crearon en este equipo están documentados en la sesión de
-instalación; **cámbialos antes de usarlos en cualquier entorno compartido**.
-
-| Entorno | Host | Puerto | Usuario |
-|---|---|---|---|
-| MySQL en Windows | `127.0.0.1` / `172.18.0.1` desde WSL | 3307 | `appuser`, `root` |
-| MySQL en contenedor | `127.0.0.1` | 3308 | `appuser`, `root` |
+| Entorno | Host | Puerto |
+|---|---|---|
+| MySQL en Windows | `127.0.0.1` / `172.18.0.1` desde WSL | 3307 |
+| MySQL en contenedor | `127.0.0.1` | 3308 |
 
 ## VS Code
 
